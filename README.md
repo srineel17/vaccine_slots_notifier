@@ -26,9 +26,8 @@ This is a polling script for determining the slot availability in real time
 * python vaccination_slots_notifier.py
 
 
-# NOTE: Script will ask for district id, which can be found from below URLS,
+## NOTE: Script will ask for district id, which can be found from below URLS,
 
-{
- "state_info_url": "https://cdn-api.co-vin.in/api/v2/admin/location/states",
- "district_info_url": "https://cdn-api.co-vin.in/api/v2/admin/location/districts/<enter_your_state_id_here>",
-}
+> state_info_url: https://cdn-api.co-vin.in/api/v2/admin/location/states,
+> district_info_url: https://cdn-api.co-vin.in/api/v2/admin/location/districts/<enter_your_state_id_here>
+
