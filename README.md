@@ -5,7 +5,7 @@ This is a polling script for determining the slot availability in real time
 
 1. Download and install python 3.* from below location, make sure to tick the 'add python to PATH' at the time of installation
 	
-	url: https://www.python.org/downloads/
+> url: https://www.python.org/downloads/
 
 
 2. Verify your installation, open 'cmd' and run the below command
