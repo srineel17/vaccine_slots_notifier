@@ -1,5 +1,5 @@
 # vaccine_slots_notifier
-This is a polling script for determining the slot availability in real time
+This is a polling script for determining the CoWin platform's vaccination slot availability for all possible locations in your district in real time
 
 ## Steps:
 
