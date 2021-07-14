@@ -5,7 +5,7 @@ import json
 import winsound
 from playsound import playsound
 
-def slot_by_district(district_id):
+def slot_by_district(district_id, dose):
 
     while True:
 
@@ -20,7 +20,10 @@ def slot_by_district(district_id):
 
         content = response.json()
 
-        available_slots = sorted([i for i in content['sessions'] if i['available_capacity'] > 0 and i['min_age_limit'] == 18 and i['fee_type'] == 'Free'], key = lambda i: i['available_capacity'], reverse=True)
+        if dose == 1:
+            available_slots = sorted([i for i in content['sessions'] if i['available_capacity'] > 0 and i['min_age_limit'] == 18 ], key = lambda i: i['available_capacity'], reverse=True)
+        elif dose == 2:
+            available_slots = sorted([i for i in content['sessions'] if i['available_capacity_dose2'] > 0 and i['min_age_limit'] == 18 ], key = lambda i: i['available_capacity_dose2'], reverse=True)
 
         if len(available_slots) > 0:
             playsound('./beep-24.mp3')
@@ -30,12 +33,16 @@ def slot_by_district(district_id):
             print("date and time =", dt_string)
             print()
             for i in available_slots:
-                print(str(i['pincode']) + ' | ' + str(i['vaccine']) + ' | '  + str(i['fee_type']) + ' | ' + str(i['date']) + ' | ' + str(i['available_capacity']).zfill(3) + ' | ' + str(i['min_age_limit']) + ' | ' + str(i['name']) + ' | ' + str(i['address']))
+                if i['fee_type'] == 'Paid':
+                    print(str(i['pincode']) + ' | ' + str(i['vaccine']) + ' | '  + str(i['fee_type']) + ' - \u20B9' + str(i['fee']) + ' | ' + str(i['date']) + ' | ' + str(i['available_capacity']).zfill(3) + ' | ' + str(i['min_age_limit']) + ' | ' + str(i['name']) + ' | ' + str(i['address']))
+                else:
+                    print(str(i['pincode']) + ' | ' + str(i['vaccine']) + ' | '  + str(i['fee_type']) + ' | ' + str(i['date']) + ' | ' + str(i['available_capacity']).zfill(3) + ' | ' + str(i['min_age_limit']) + ' | ' + str(i['name']) + ' | ' + str(i['address']))
             print('-------------------------------------------------------------------------------------------------------------')
 
         time.sleep(5) #Time interval between number of hits in value seconds, minimum value should be 3 (Goverment allows 100 hits every 5 mins)
 
 
 district_id = str(input("Please enter your District's ID: "))
+dose = int(input("Dose 1 or Dose 2 (Enter 1/2): "))
 
-slot_by_district(district_id) #Input Parameter is district_id
+slot_by_district(district_id, dose) #Input Parameter is district_id
