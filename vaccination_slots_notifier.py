@@ -39,7 +39,7 @@ def slot_by_district(district_id, dose):
                     print(str(i['pincode']) + ' | ' + str(i['vaccine']) + ' | '  + str(i['fee_type']) + ' | ' + str(i['date']) + ' | ' + str(i['available_capacity']).zfill(3) + ' | ' + str(i['min_age_limit']) + ' | ' + str(i['name']) + ' | ' + str(i['address']))
             print('-------------------------------------------------------------------------------------------------------------')
 
-        time.sleep(5) #Time interval between number of hits in value seconds, minimum value should be 3 (Goverment allows 100 hits every 5 mins)
+        time.sleep(5) #Time interval between number of hits in value seconds, minimum value should be 3 (Government allows 100 hits every 5 mins)
 
 
 district_id = str(input("Please enter your District's ID: "))
